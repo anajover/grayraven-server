@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-//POST "/api/constructs" => crear un nuevo Construct
+//POST "/api/constructs/create" => crear un nuevo Construct.
 router.post("/create", async (req, res, next) => {
 
     const { constructPicture, constructProfilePicture, voice, rank, name, frame, constructType, serviceTime, activationDate, height, weight, vitalFluidType, mentalAge, team, file, energy, model } = req.body

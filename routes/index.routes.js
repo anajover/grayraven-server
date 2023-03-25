@@ -19,7 +19,7 @@ const authRoutes = require("./auth.routes.js")
 router.use("/auth", authRoutes)
 
 const profileRoutes = require("./profile.routes")
-router.use("/admin", profileRoutes)
+router.use("/profile", profileRoutes)
 
 const uploaderRoutes = require("./uploader.routes")
 router.use("/uploader", uploaderRoutes)

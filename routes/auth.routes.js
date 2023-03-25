@@ -1,9 +1,9 @@
-const UserModel = require("../models/User.model");
+const UserModel = require("../models/User.model.js");
 const router = require("express").Router();
 
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken");
-const isAuthenticated = require("../middlewares/isAuthenticated");
+const isAuthenticated = require("../middlewares/isAuthenticated.js");
 
 //POST "/api/auth/signup" => registrar un usuario
 router.post("/signup", async (req, res, next) => {
@@ -18,9 +18,7 @@ router.post("/signup", async (req, res, next) => {
 
     try {
 
-        const foundUser = await UserModel.findOne({
-            $or: [{ username }, { email }]
-        });
+        const foundUser = await UserModel.findOne({$or: [{ username }, { email }]})
         if(foundUser !== null) {
             res.status(400).json({errorMessage: "Usuario ya registrado"})
             return;
@@ -57,6 +55,7 @@ router.post("/admin", async (req, res, next) => {
 
         //el usuario ha sido validado
         const passwordMatch = await bcryptjs.compare(password, foundUser.password)
+        console.log(passwordMatch)
 
         if (passwordMatch === false) {
             res.status(401).json({errorMessage: "La contraseña no es correcta."})

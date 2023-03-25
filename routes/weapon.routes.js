@@ -60,7 +60,7 @@ router.delete("/:id", async (req, res, next) => {
 
     try {
 
-        const response = await WeaponFindById().select("name")
+        const response = await WeaponModel.findById().select("name")
         await WeaponModel.findByIdAndDelete(id);
         res.json(`El arma ${response.name} ha salido eliminada.`)
 
@@ -69,7 +69,7 @@ router.delete("/:id", async (req, res, next) => {
     }
 })
 
-// PATCH "/api/weapon/:id/edit" => editar arma
+// PATCH "/api/weapons/:id/edit" => editar arma
 router.patch("/:id/edit", async (req, res, next) => {
 
     const {id} = req.params
